@@ -6,6 +6,8 @@ include RandomData
         body: RandomData.random_paragraph
         )
 end
+
+Post.find_or_create_by!(title: 'Unique post is unique.', body: 'This post is not like other posts. This is a post with actual words.')
 posts = Post.all
 
 100.times do
