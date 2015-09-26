@@ -1,0 +1,14 @@
+<h1>Ad Index</h1>
+
+<%= link_to "Create your own ad", new_advertisement_path, class: 'btn btn-success' %>
+
+
+<% @ads.each do |a| %>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">
+                <%= link_to a.title, a %>
+            </h4>    
+        </div>
+    </div>
+<% end %>
