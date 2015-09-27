@@ -1,0 +1,29 @@
+<h1>Ask a Question</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <p>Guidelines for questions</p>
+        <ul>
+            <li>Put it in those boxes over there</li>
+            <li>End it with a question mark</li>
+            <li>Push the green button</li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <%= form_for @question do |q| %>
+            <div class="form-group">
+                <%= q.label :title %>
+                <%= q.text_field :title, class: 'form-control', placeholder: 'Question Title Here' %>
+            </div>
+            <div class="form-group">
+                <%= q.label :body %>
+                <%= q.text_area :body, rows: 8, class: 'form-control', placeholder: 'Question Body Here' %> 
+            </div>
+            <%= q.label :resolved %>
+            <%= q.check_box :resolved %>
+            <div class="form-group">
+                <%= q.submit "Submit", class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+</div>
