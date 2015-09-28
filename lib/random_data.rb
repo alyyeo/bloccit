@@ -21,4 +21,8 @@ module RandomData
         end
         sentences.join(".")
     end
+    
+    def random_price
+        return rand(1..100)
+    end
 end
