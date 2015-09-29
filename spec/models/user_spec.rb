@@ -43,4 +43,17 @@ RSpec.describe User, type: :model do
         expect(user_with_invalid_email_format).to_not be_valid
     end
   end
+  
+  describe "capitalizes name" do
+    let(:user_proper_format) { User.create!(name: "Hermione Granger", email: "hgranger@hogwarts.com", password: "1234567") }
+    let(:user_improper_format) { User.create!(name: "rOn WEAsLey", email: "rweasley@hogwarts.com", password: "abcdefg") }
+    
+    it "capitalizes a properly formatted name" do
+        expect(user_proper_format.name).to eq "Hermione Granger"
+    end
+    
+    it "capitalizes an improperly formatted name" do
+        expect(user_improper_format.name).to eq "Ron Weasley"
+    end
+  end
 end
