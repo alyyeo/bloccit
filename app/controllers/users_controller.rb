@@ -4,18 +4,21 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.new
-        @user.name = params[:user][:name]
-        @user.email = params[:user][:email]
-        @user.password = params[:user][:password]
-        @user.password_confirmation = params[:user][:password_confirmation]
+        @user = assign_params
         
         if @user.save
             flash[:notice] = "Welcome to Bloccit #{@user.name}!"
+            create_session(@user)
             redirect_to root_path
         else
             flash[:error] = "There was an error creating your account. Please try again."
             render :new
         end
+    end
+    
+    private
+    
+    def assign_params
+        User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     end
 end
