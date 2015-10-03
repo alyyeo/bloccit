@@ -1,5 +1,17 @@
 include RandomData
 
+admin = User.create!(
+    name: 'Admin User',
+    email: 'admin@example.com',
+    password: 'helloworld',
+    role: 'admin')
+    
+member = User.create!(
+    name: 'Member User',
+    email: 'member@example.com',
+    password: 'helloworld'
+    )
+
 5.times do 
     User.create!(
         name: RandomData.random_name,
@@ -33,12 +45,6 @@ posts = Post.all
         body: RandomData.random_paragraph
         )
 end
-
-user = User.first
-user.update_attributes!(
-    email: "hakuyang@gmail.com",
-    password: "helloworld"
-    )
 
 puts "Seed finished"
 puts "#{User.count} users created"
