@@ -11,6 +11,13 @@ member = User.create!(
     email: 'member@example.com',
     password: 'helloworld'
     )
+    
+    mod = User.create!(
+        name: 'Mod User',
+        email: 'mod@example.com',
+        password: 'helloworld',
+        role: 'mod'
+        )
 
 5.times do 
     User.create!(
