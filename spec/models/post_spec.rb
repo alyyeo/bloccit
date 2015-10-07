@@ -75,5 +75,24 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq(old_rank - 1)
       end
     end
+    
+    describe "#create_vote" do
+      before do
+        @my_post = topic.posts.create!(title: "My Post", body: RandomData.random_paragraph, user: user)
+      end 
+      
+      it "creates a vote for my_post" do
+        expect(@my_post.votes.count).to eq(1)
+      end
+      
+      it "the vote created is an up_vote" do
+        expect(@my_post.points).to eq(1)
+      end
+      
+      it "user who created post is the same as first up_vote" do
+        first_vote = @my_post.votes.first
+        expect(@my_post.user.id).to eq(first_vote.user.id)
+      end
+    end
   end
 end
