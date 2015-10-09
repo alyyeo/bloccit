@@ -12,4 +12,7 @@ class FavoriteMailer < ApplicationMailer
         
         mail(to: user.email, subject: "New comment on #{post.title}")
     end
+    
+    def new_post(user, post, comment)
+    end
 end

@@ -1,5 +1,6 @@
 require 'rails_helper'
 include RandomData
+include SessionsHelper
 
 RSpec.describe Post, type: :model do
   let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
@@ -76,5 +77,21 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq(old_rank - 1)
       end
     end
+  end
+  
+  describe "after_create" do
+    before do
+      create_session(user)
+    end
+      
+    it "creates a favorite for the new post" do
+      @post2 = topic.posts.create!(title: "Post 2", body: RandomData.random_paragraph)
+      expect(user.favorite_for(@post2)).not_to be_nil
+    end
+    
+    # it "sends an email to the post creator" do
+    #   @post2 = topic.posts.create!(title: "Post 2", body: RandomData.random_paragraph, user: user)
+    #   expect(FavoriteMailer).to receive(:new_post).with(user, @post2).and_return(double(deliver_now: true))
+    # end
   end
 end

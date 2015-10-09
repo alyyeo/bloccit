@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content Type" />
+    </head>
+    <body>
+        <h1>You created the new post "<%= @post.title %></h1>
+        <small>
+            At <%= @post.created_at %> you wrote: 
+        </small>
+        <p><%= @post.body %></p>
+        <h4>Your post was favorited by <%= @post.user.name %> and we'll let you know when someone comments on your post!</h4>
+        <p><%= link_to "View your post on Bloccit", topic_post_url(@post.topic, @post) %></p>
+    </body>
+</html>

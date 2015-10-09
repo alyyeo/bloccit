@@ -1,0 +1,9 @@
+You created the post "<%= @post.title %>"
+<%= "=" * (@post.title.length + 20) %>
+
+At <%= @post.created_at %> you wrote:
+<%= @post.body %>
+
+Your post was favorited by <%= @post.user.name %> and we'll let you know when someone comments on your post!
+
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
