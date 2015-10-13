@@ -2,7 +2,7 @@ include RandomData
 
 FactoryGirl.define do
     factory :post do
-        title RandomData.random_sentence
+        sequence(:title) { |n| "Post Title #{n}" }
         body RandomData.random_paragraph
         topic
         user
