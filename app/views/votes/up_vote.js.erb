@@ -1,0 +1,6 @@
+<% if @vote.valid? %>
+    $('#votes-post-' +<%= @post.id %>).html("<%= @post.points %>");
+    $('.side-bar-points').html("<%= pluralize(@post.points, "point") %>");
+    $('.up-votes').html("<%= pluralize(@post.up_votes, "up vote") %>");
+    $('.down-votes').html("<%= pluralize(@post.down_votes, "down vote") %>");
+<% end %>
